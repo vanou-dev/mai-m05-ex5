@@ -27,9 +27,3 @@ Analysis
 --------
 
 .. automodule:: analysis
-
-
-Unit Testing
-------------
-
-.. automodule:: test
