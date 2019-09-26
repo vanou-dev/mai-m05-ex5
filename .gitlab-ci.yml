@@ -12,8 +12,10 @@ build:
   script:
     - coverage run test.py
     - coverage html
+    - sphinx-build doc sphinx
   artifacts:
     expire_in: 1 week
     paths:
       - htmlcov
+      - sphinx
 

@@ -13,6 +13,7 @@ needs_sphinx = '1.3'
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+import sphinx_rtd_theme
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
@@ -25,6 +26,7 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinx.ext.mathjax',
+    'sphinx_rtd_theme',
     ]
 
 # Be picky about warnings
@@ -132,7 +134,6 @@ owner = [u'Idiap Research Institute']
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
