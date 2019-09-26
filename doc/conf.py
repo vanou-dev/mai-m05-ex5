@@ -5,6 +5,9 @@ import os
 import sys
 import glob
 
+# -- Add current project where running from
+sys.path.append(os.path.abspath('..'))
+
 
 # -- General configuration -----------------------------------------------------
 
@@ -225,15 +228,6 @@ autodoc_default_flags = [
   'undoc-members',
   'show-inheritance',
   ]
-
-# For inter-documentation mapping:
-from bob.extension.utils import link_documentation, load_requirements
-sphinx_requirements = "extra-intersphinx.txt"
-if os.path.exists(sphinx_requirements):
-    intersphinx_mapping = link_documentation(additional_packages=load_requirements(sphinx_requirements))
-else:
-    intersphinx_mapping = link_documentation()
-
 
 # We want to remove all private (i.e. _. or __.__) members
 # that are not in the list of accepted functions
