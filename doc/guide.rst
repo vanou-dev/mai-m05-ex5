@@ -12,7 +12,7 @@ command:
 
 .. code-block:: sh
 
-   python3 paper.py
+   $ python paper.py
 
 
 For your reference, the paper tables are repeated below, so you can check the
