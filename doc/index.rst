@@ -33,7 +33,7 @@ Documentation
 .. toctree::
 
    installation
-   running
+   guide
    troubleshooting
    py_api
    license

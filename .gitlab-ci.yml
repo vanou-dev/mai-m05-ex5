@@ -10,12 +10,12 @@ build:
     - source $CONDA_DIR/etc/profile.d/conda.sh
     - conda activate fspr
   script:
+    - sphinx-build doc sphinx
+    - sphinx-build -b doctest doc sphinx
     - coverage run test.py
     - coverage html
-    - sphinx-build doc sphinx
   artifacts:
     expire_in: 1 week
     paths:
       - htmlcov
       - sphinx
-
