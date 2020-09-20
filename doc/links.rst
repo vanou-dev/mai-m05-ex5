@@ -6,6 +6,7 @@
 .. _numpy: http://numpy.scipy.org
 .. _scipy: http://www.scipy.org
 .. _nose: http://nose.readthedocs.org
+.. _miniconda: https://docs.conda.io/en/latest/miniconda.html
 .. _pypi: http://pypi.python.org
 .. _setuptools: https://pypi.org/project/setuptools/
 .. _sphinx: http://sphinx.pocoo.org

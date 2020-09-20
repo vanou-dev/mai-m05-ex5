@@ -11,7 +11,9 @@ You can run unit tests I have prepared like this (install nose_ first):
 .. code-block:: shell
 
   # use your package manager to install the package "nose"
-  $ nosetests ./test.py
+  # here, I examplify with "miniconda":
+  (project) $ conda install nose
+  (project) $ nosetests ./test.py
 
 In case of problems, please get in touch with me `by e-mail
 <mailto:john.doe@example.com>`_.
