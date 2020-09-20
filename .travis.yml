@@ -13,10 +13,20 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda create -q -n project python=$TRAVIS_PYTHON_VERSION numpy scipy nose coverage coveralls
+  - conda create -q -n project python=$TRAVIS_PYTHON_VERSION numpy scipy nose coverage coveralls sphinx sphinx_rtd_theme
   - conda activate project
 
 script:
   # Run phase of our CI pipeline
   - nosetests -sv --with-coverage --cover-package=. test.py #runs test
+  - sphinx-build -b doctest doc sphinx
+  # Build docs
+  - sphinx-build doc sphinx
+  - touch sphinx/.nojekyll
   - coveralls #uploads coverage report to coveralls.io
+
+deploy:
+  - provider: pages:git
+    verbose: true
+    token: $GITHUB_TOKEN
+    local_dir: ./sphinx/
