@@ -9,21 +9,25 @@ Database
 --------
 
 .. automodule:: database
+   :members:
 
 
 Pre-processor
 -------------
 
 .. automodule:: preprocessor
+   :members:
 
 
 Machine Learning Algorithm
 --------------------------
 
 .. automodule:: algorithm
+   :members:
 
 
 Analysis
 --------
 
 .. automodule:: analysis
+   :members:
