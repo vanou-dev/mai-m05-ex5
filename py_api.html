@@ -172,17 +172,348 @@
 <span id="database"></span><h2>Database<a class="headerlink" href="#module-database" title="Permalink to this headline">¶</a></h2>
 <p>Database specifications for an evaluation protocol based on the Iris Flower
 databases from Fisher’s original work.</p>
+<dl class="py function">
+<dt id="database.load">
+<code class="sig-prename descclassname">database.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/database.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#database.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the data from its CSV format into an easy to dictionary of arrays</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="database.split_data">
+<code class="sig-prename descclassname">database.</code><code class="sig-name descname">split_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">subset</span></em>, <em class="sig-param"><span class="n">splits</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database.html#split_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#database.split_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data for a given protocol</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="database.get">
+<code class="sig-prename descclassname">database.</code><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">protocol</span></em>, <em class="sig-param"><span class="n">subset</span></em>, <em class="sig-param"><span class="n">classes</span><span class="o">=</span><span class="default_value">['setosa', 'versicolor', 'virginica']</span></em>, <em class="sig-param"><span class="n">variables</span><span class="o">=</span><span class="default_value">['sepal length', 'sepal width', 'petal length', 'petal width']</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database.html#get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#database.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data subset given a particular protocol</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>protocol</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – one of the valid protocols supported by this interface</p></li>
+<li><p><strong>subset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – one of ‘train’ or ‘test’</p></li>
+<li><p><strong>classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – a list of strings containing the names of the classes from which you
+want to have the data from</p></li>
+<li><p><strong>variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – a list of strings containg the names of the variables (features) you
+want to have data from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>data</strong> – The data for all the classes and variables nicely packed into one numpy
+3D array. One depth represents the data for one class, one row is one
+example, one column a given feature.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-preprocessor">
 <span id="pre-processor"></span><h2>Pre-processor<a class="headerlink" href="#module-preprocessor" title="Permalink to this headline">¶</a></h2>
 <p>A simple pre-processing that applies Z-normalization to the input
 features</p>
+<dl class="py function">
+<dt id="preprocessor.estimate_norm">
+<code class="sig-prename descclassname">preprocessor.</code><code class="sig-name descname">estimate_norm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessor.html#estimate_norm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessor.estimate_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the mean and standard deviation from a data set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – A 2D numpy ndarray in which the rows represent examples while the
+columns, features of the data you want to estimate normalization
+parameters on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mean</strong> (<em>numpy.ndarray</em>) – A 1D numpy ndarray containing the estimated mean over
+dimension 1 (columns) of the input data X</p></li>
+<li><p><strong>std</strong> (<em>numpy.ndarray</em>) – A 1D numpy ndarray containing the estimated unbiased standard deviation
+over dimension 1 (columns) of the input data X</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="preprocessor.normalize">
+<code class="sig-prename descclassname">preprocessor.</code><code class="sig-name descname">normalize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">norm</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessor.html#normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessor.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the given norm to the input data set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – A 3D numpy ndarray in which the rows represent examples while the
+columns, features of the data set you want to normalize. Every depth
+corresponds to data for a particular class</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – A tuple containing two 1D numpy ndarrays corresponding to the
+normalization parameters extracted with <code class="xref py py-func docutils literal notranslate"><span class="pre">estimated_norm()</span></code>
+above.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_normed</strong> – A 3D numpy ndarray with the same dimensions as the input array <code class="docutils literal notranslate"><span class="pre">X</span></code>,
+but with its values normalized according to the norm input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-algorithm">
 <span id="machine-learning-algorithm"></span><h2>Machine Learning Algorithm<a class="headerlink" href="#module-algorithm" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="algorithm.make_labels">
+<code class="sig-prename descclassname">algorithm.</code><code class="sig-name descname">make_labels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#make_labels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.make_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function that generates a single 1D array with labels which
+are good targets for stock logistic regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 3 dimensions or an
+iterable containing 2 arrays with 2 dimensions each. Each correspond to
+the data for one of the two classes, every row corresponds to one
+example of the data set, every column, one different feature.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>labels</strong> – With a single dimension, containing suitable labels for all rows and
+for all classes defined in X (depth).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="algorithm.Machine">
+<em class="property">class </em><code class="sig-prename descclassname">algorithm.</code><code class="sig-name descname">Machine</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Machine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Machine" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle all run-time aspects for Logistic Regression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – A set of parameters for the Logistic Regression model. This must be an
+iterable (or numpy array) with all parameters for the model, including
+the bias term, which must be on entry 0 (the first entry at the
+iterable).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="algorithm.Machine.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Machine.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Machine.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts the class of each row of X</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 2 dimensions.
+Every row corresponds to one example of the data set, every column,
+one different feature.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>predictions</strong> – A 1D array with as many entries as rows in the input 2D array
+<code class="docutils literal notranslate"><span class="pre">X</span></code>, representing g(x), the class predictions for the current
+machine.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithm.Machine.J">
+<code class="sig-name descname">J</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">regularizer</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Machine.J"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Machine.J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the logistic regression cost</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 3 dimensions or an
+iterable containing 2 numpy.ndarrays with 2 dimensions each. Each
+correspond to the data for one of the two classes, every row
+corresponds to one example of the data set, every column, one
+different feature.</p></li>
+<li><p><strong>regularizer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – The regularization parameter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cost</strong> – The averaged (regularized) cost for the whole dataset</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithm.Machine.dJ">
+<code class="sig-name descname">dJ</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">regularizer</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Machine.dJ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Machine.dJ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the logistic regression first derivative of the cost w.r.t.
+each parameter theta</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 3 dimensions or
+an iterable containing 2 arrays with 2 dimensions each. Each
+correspond to the data for one of the two classes, every row
+corresponds to one example of the data set, every column, one
+different feature.</p></li>
+<li><p><strong>regularizer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – The regularization parameter, if the solution should be regularized.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>grad</strong> – A 1D array with as many entries as columns on the input matrix
+<code class="docutils literal notranslate"><span class="pre">X</span></code> plus 1 (the bias term). It denotes the average gradient of
+the cost w.r.t. to each machine parameter theta.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="algorithm.Trainer">
+<em class="property">class </em><code class="sig-prename descclassname">algorithm.</code><code class="sig-name descname">Trainer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">regularizer</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Trainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Trainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle all training aspects for Logistic Regression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>regularizer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – The regularization parameter</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="algorithm.Trainer.J">
+<code class="sig-name descname">J</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">machine</span></em>, <em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Trainer.J"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Trainer.J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the vectorized cost <em>J</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithm.Trainer.dJ">
+<code class="sig-name descname">dJ</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">machine</span></em>, <em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Trainer.dJ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Trainer.dJ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the vectorized partial derivative of the cost <em>J</em> w.r.t. to
+<strong>all</strong> :math:` heta`’s. Use the training dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithm.Trainer.train">
+<code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#Trainer.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.Trainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimizes the machine parameters to fit the input data, using
+<code class="docutils literal notranslate"><span class="pre">scipy.optimize.fmin_l_bfgs_b</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 3 dimensions or
+an iterable containing 2 arrays with 2 dimensions each.  Each
+correspond to the data for one of the two classes, every row
+corresponds to one example of the data set, every column, one
+different feature.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>machine</strong> – A trained machine.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#algorithm.Machine" title="algorithm.Machine">Machine</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.8)"><strong>RuntimeError</strong></a> – In case problems exist with the design matrix <code class="docutils literal notranslate"><span class="pre">X</span></code> or with
+    convergence.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="algorithm.MultiClassMachine">
+<em class="property">class </em><code class="sig-prename descclassname">algorithm.</code><code class="sig-name descname">MultiClassMachine</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">machines</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#MultiClassMachine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.MultiClassMachine" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle all run-time aspects for Multiclass Log. Regression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>machines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>) – An iterable over any number of machines that will be stored.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="algorithm.MultiClassMachine.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#MultiClassMachine.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.MultiClassMachine.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts the class of each row of X</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 3 dimensions or
+an iterable containing 2 arrays with 2 dimensions each.  Each
+correspond to the data for one of the two classes, every row
+corresponds to one example of the data set, every column, one
+different feature.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>predictions</strong> – A 1D array with as many entries as rows in the input 2D array
+<code class="docutils literal notranslate"><span class="pre">X</span></code>, representing g(x), the class predictions for the current
+machine.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="algorithm.MultiClassTrainer">
+<em class="property">class </em><code class="sig-prename descclassname">algorithm.</code><code class="sig-name descname">MultiClassTrainer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">regularizer</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#MultiClassTrainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.MultiClassTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle all training aspects for Multiclass Log. Regression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>regularizer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – The regularization parameter</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="algorithm.MultiClassTrainer.train">
+<code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithm.html#MultiClassTrainer.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithm.MultiClassTrainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trains multiple logistic regression classifiers to handle the multiclass
+problem posed by <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – The input data matrix. This must be an array with 3 dimensions or
+an iterable containing 2 arrays with 2 dimensions each.  Each
+correspond to the data for one of the input classes, every row
+corresponds to one example of the data set, every column, one
+different feature.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>machine</strong> – A trained multiclass machine.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#algorithm.Machine" title="algorithm.Machine">Machine</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-analysis">
 <span id="analysis"></span><h2>Analysis<a class="headerlink" href="#module-analysis" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="analysis.CER">
+<code class="sig-prename descclassname">analysis.</code><code class="sig-name descname">CER</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prediction</span></em>, <em class="sig-param"><span class="n">true_labels</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analysis.html#CER"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analysis.CER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the classification error rate for an N-class classification problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prediction</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – A 1D <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> containing your prediction</p></li>
+<li><p><strong>true_labels</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – A 1D <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> containing the ground truth labels for
+the input array, organized in the same order.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>CER</strong> – The classification error rate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
