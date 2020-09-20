@@ -1,9 +1,11 @@
-.. image:: https://gitlab.idiap.ch/master-ai/m05-ex5/badges/master/build.svg
-   :target: https://gitlab.idiap.ch/master-ai/m05-ex5/commits/master
-.. image:: https://gitlab.idiap.ch/master-ai/m05-ex5/badges/master/coverage.svg
-   :target: https://gitlab.idiap.ch/master-ai/m05-ex5/commits/master
-.. image:: https://img.shields.io/badge/gitlab-project-0000c0.svg
-   :target: https://gitlab.idiap.ch/master-ai/m05-ex5
+.. image:: https://travis-ci.org/idiap/mai-m05-ex5.svg?branch=master
+   :target: https://travis-ci.org/github/idiap/mai-m05-ex5
+.. image:: https://coveralls.io/repos/github/idiap/mai-m05-ex5/badge.svg?branch=master
+   :target: https://coveralls.io/github/idiap/mai-m05-ex5?branch=master
+.. image:: https://img.shields.io/badge/docs-latest-orange.svg
+   :target: https://idiap.github.io/mai-m05-ex5/index.html
+.. image:: https://img.shields.io/badge/github-project-0000c0.svg
+   :target: https://github.com/idiap/mai-m05-ex5
 
 ===============================================================
  Reproducible Multi-Class Logistic Regression for Iris Flowers
@@ -24,5 +26,6 @@ This bundle contains the code I used to generate the tables on the paper::
 We appreciate your citation in case you use results obtained directly or
 indirectly via this software package.
 
-For installation and usage instructions, please refer to our documentation
-(within the `doc` directory).
+For installation and usage instructions, please refer to our documentation,
+that can be accessed through the relevant badge above.
+
