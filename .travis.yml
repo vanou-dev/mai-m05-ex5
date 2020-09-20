@@ -28,5 +28,6 @@ script:
 deploy:
   - provider: pages:git
     verbose: true
+    edge: true
     token: $GITHUB_TOKEN
     local_dir: ./sphinx/
