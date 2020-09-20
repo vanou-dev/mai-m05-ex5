@@ -31,3 +31,6 @@ deploy:
     edge: true
     token: $GITHUB_TOKEN
     local_dir: ./sphinx/
+    on:
+        branch: master
+        condition: $TRAVIS_PYTHON_VERSION = 3.8
