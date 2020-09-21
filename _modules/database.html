@@ -92,8 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../py_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python API</a></li>
 </ul>
 
             
@@ -195,7 +194,7 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="load"><a class="viewcode-back" href="../py_api.html#database.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">():</span>
+<div class="viewcode-block" id="load"><a class="viewcode-back" href="../api.html#database.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Loads the data from its CSV format into an easy to dictionary of arrays&quot;&quot;&quot;</span>
 
     <span class="kn">import</span> <span class="nn">csv</span>
@@ -212,13 +211,13 @@
     <span class="k">return</span> <span class="n">data</span></div>
 
 
-<div class="viewcode-block" id="split_data"><a class="viewcode-back" href="../py_api.html#database.split_data">[docs]</a><span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">splits</span><span class="p">):</span>
+<div class="viewcode-block" id="split_data"><a class="viewcode-back" href="../api.html#database.split_data">[docs]</a><span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">splits</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the data for a given protocol&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">splits</span><span class="p">[</span><span class="n">subset</span><span class="p">]])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span></div>
 
 
-<div class="viewcode-block" id="get"><a class="viewcode-back" href="../py_api.html#database.get">[docs]</a><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">CLASSES</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">VARIABLES</span><span class="p">):</span>
+<div class="viewcode-block" id="get"><a class="viewcode-back" href="../api.html#database.get">[docs]</a><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">CLASSES</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">VARIABLES</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the data subset given a particular protocol</span>
 
 
