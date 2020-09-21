@@ -35,8 +35,7 @@ Documentation
    installation
    guide
    troubleshooting
-   py_api
-   license
+   api
 
 
 Indices and tables
